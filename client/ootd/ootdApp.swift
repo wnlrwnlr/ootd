@@ -11,7 +11,10 @@ import SwiftUI
 struct ootdApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ContentView()
+            }
+            .tint(.brown)
         }
     }
 }
