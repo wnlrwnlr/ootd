@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5384C8F82CE0E46200B969DC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5384C8F72CE0E46200B969DC /* WidgetKit.framework */; };
+		5384C8FA2CE0E46200B969DC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5384C8F92CE0E46200B969DC /* SwiftUI.framework */; };
+		5384C90B2CE0E46400B969DC /* ootd-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		535B352C2CDBAE64000846F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = 535B351A2CDBAE63000846F3;
 			remoteInfo = ootd;
 		};
+		5384C9092CE0E46400B969DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535B35132CDBAE63000846F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5384C8F42CE0E46200B969DC;
+			remoteInfo = "ootd-widgetExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5384C9102CE0E46400B969DC /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5384C90B2CE0E46400B969DC /* ootd-widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		535B351B2CDBAE63000846F3 /* ootd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ootd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535B352B2CDBAE64000846F3 /* ootdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ootdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		535B35352CDBAE64000846F3 /* ootdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ootdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ootd-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5384C8F72CE0E46200B969DC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5384C8F92CE0E46200B969DC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5384C90C2CE0E46400B969DC /* Exceptions for "ootd-widget" folder in "ootd-widgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5384C8F42CE0E46200B969DC /* ootd-widgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		535B351D2CDBAE63000846F3 /* ootd */ = {
@@ -43,6 +83,14 @@
 		535B35382CDBAE64000846F3 /* ootdUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ootdUITests;
+			sourceTree = "<group>";
+		};
+		5384C8FB2CE0E46200B969DC /* ootd-widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5384C90C2CE0E46400B969DC /* Exceptions for "ootd-widget" folder in "ootd-widgetExtension" target */,
+			);
+			path = "ootd-widget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5384C8F22CE0E46200B969DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5384C8FA2CE0E46200B969DC /* SwiftUI.framework in Frameworks */,
+				5384C8F82CE0E46200B969DC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				535B351D2CDBAE63000846F3 /* ootd */,
 				535B352E2CDBAE64000846F3 /* ootdTests */,
 				535B35382CDBAE64000846F3 /* ootdUITests */,
+				5384C8FB2CE0E46200B969DC /* ootd-widget */,
+				5384C8F62CE0E46200B969DC /* Frameworks */,
 				535B351C2CDBAE63000846F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				535B351B2CDBAE63000846F3 /* ootd.app */,
 				535B352B2CDBAE64000846F3 /* ootdTests.xctest */,
 				535B35352CDBAE64000846F3 /* ootdUITests.xctest */,
+				5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5384C8F62CE0E46200B969DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5384C8F72CE0E46200B969DC /* WidgetKit.framework */,
+				5384C8F92CE0E46200B969DC /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				535B35172CDBAE63000846F3 /* Sources */,
 				535B35182CDBAE63000846F3 /* Frameworks */,
 				535B35192CDBAE63000846F3 /* Resources */,
+				5384C9102CE0E46400B969DC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5384C90A2CE0E46400B969DC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				535B351D2CDBAE63000846F3 /* ootd */,
@@ -163,6 +234,28 @@
 			productReference = 535B35352CDBAE64000846F3 /* ootdUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		5384C8F42CE0E46200B969DC /* ootd-widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5384C90D2CE0E46400B969DC /* Build configuration list for PBXNativeTarget "ootd-widgetExtension" */;
+			buildPhases = (
+				5384C8F12CE0E46200B969DC /* Sources */,
+				5384C8F22CE0E46200B969DC /* Frameworks */,
+				5384C8F32CE0E46200B969DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5384C8FB2CE0E46200B969DC /* ootd-widget */,
+			);
+			name = "ootd-widgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "ootd-widgetExtension";
+			productReference = 5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +277,9 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 535B351A2CDBAE63000846F3;
 					};
+					5384C8F42CE0E46200B969DC = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 535B35162CDBAE63000846F3 /* Build configuration list for PBXProject "ootd" */;
@@ -203,6 +299,7 @@
 				535B351A2CDBAE63000846F3 /* ootd */,
 				535B352A2CDBAE64000846F3 /* ootdTests */,
 				535B35342CDBAE64000846F3 /* ootdUITests */,
+				5384C8F42CE0E46200B969DC /* ootd-widgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		535B35332CDBAE64000846F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5384C8F32CE0E46200B969DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5384C8F12CE0E46200B969DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = 535B351A2CDBAE63000846F3 /* ootd */;
 			targetProxy = 535B35362CDBAE64000846F3 /* PBXContainerItemProxy */;
+		};
+		5384C90A2CE0E46400B969DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5384C8F42CE0E46200B969DC /* ootd-widgetExtension */;
+			targetProxy = 5384C9092CE0E46400B969DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -518,6 +634,60 @@
 			};
 			name = Release;
 		};
+		5384C90E2CE0E46400B969DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86886QH957;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ootd-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ootd-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gyuni.ootd.ootd-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5384C90F2CE0E46400B969DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86886QH957;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ootd-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ootd-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gyuni.ootd.ootd-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +723,15 @@
 			buildConfigurations = (
 				535B35462CDBAE64000846F3 /* Debug */,
 				535B35472CDBAE64000846F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5384C90D2CE0E46400B969DC /* Build configuration list for PBXNativeTarget "ootd-widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5384C90E2CE0E46400B969DC /* Debug */,
+				5384C90F2CE0E46400B969DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
