@@ -91,3 +91,20 @@ iOSInjectionProject/
 
 # etc
 *.DS_Store
+
+# Python Virtual Environment
+venv/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment Configuration File
+.env
+
+# AWS Key Files
+*.pem
+
+# Log Files
+*.log
