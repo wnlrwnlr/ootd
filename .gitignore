@@ -108,3 +108,6 @@ __pycache__/
 
 # Log Files
 *.log
+
+# VS Code settings
+.vscode/
