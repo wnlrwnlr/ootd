@@ -1,11 +1,16 @@
 from cache import Cache
 from repository import Repository
+import os
+from dotenv import load_dotenv
 
 
 class OOTD:
-    def __init__(self, api_key):
-        print("ootd init" + str(api_key))
-        self.api_key = api_key
+    def __init__(self):
+        print("ootd init")
+
+        load_dotenv()
+        api_key = os.getenv('API_KEY')
+
         self.cache = Cache()
         self.repository = Repository(api_key=api_key)
 
@@ -22,5 +27,5 @@ class OOTD:
             return response
 
 
-ootd = OOTD(123)
+ootd = OOTD()
 ootd.handle("hello world")

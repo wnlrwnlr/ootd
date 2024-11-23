@@ -5,6 +5,7 @@ class Repository:
 
     def get(self, params):
         print("repository get" + "params: " + str(params))
+
         # params를 이용해서
         # 적절히 openAI api를 호출해서
         # 추천값을 받아와서 return
