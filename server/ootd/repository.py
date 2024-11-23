@@ -3,11 +3,11 @@ import requests
 
 class Repository:
     def __init__(self, api_key):
-        print("repositroy init" + "api_key: " + str(api_key))
+        print("@@@ repositroy > init" + " api_key: " + str(api_key))
         self.api_key = api_key
 
     def get(self, params):
-        print("repository get" + "params: " + str(params))
+        print("@@@ repository get > " + " params: " + str(params))
 
         try:
             description = self.__request_chat(params)
