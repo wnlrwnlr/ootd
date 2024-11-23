@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 
-class OOTD:
+class Handler:
     def __init__(self):
         print("@@@ ootd > init")
 
@@ -25,8 +25,3 @@ class OOTD:
             if response:
                 self.cache.set(params=params, response=response)
             return response
-
-
-ootd = OOTD()
-result = ootd.handle("오늘 조금 춥고, 바람도 불고 캐쥬얼한 옷도 좋고 나는 남자야.")
-result = ootd.handle("오늘 조금 춥고, 바람도 불고 캐쥬얼한 옷도 좋고 나는 남자야.")
