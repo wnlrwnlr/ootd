@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify, make_response
+import json
+from flask import Flask, request, make_response
 from handler import Handler
 
 app = Flask(__name__)
 
 handler = Handler()
+
 
 @app.route('/recommand', methods=['GET'])
 def recommand():
@@ -12,37 +14,30 @@ def recommand():
         result = handler.handle(description)
 
         if result is None:
-            # Error handling: Return a 500 Internal Server Error with a JSON response
-            response = make_response(
-                jsonify({
-                    "status": "error",
-                    "message": "Handler failed to process the description."
-                }),
-                500
-            )
+            response_body = json.dumps({
+                "status": "error",
+                "message": "Handler failed to process the description."
+            }, ensure_ascii=False)
+            status_code = 500
         else:
-            # Successful handling: Return a JSON response with the result
-            response = make_response(
-                jsonify({
-                    "status": "success",
-                    "description": result[0],  # First part of the tuple
-                    "image": result[1]        # Second part of the tuple
-                }),
-                200
-            )
+            response_body = json.dumps({
+                "status": "success",
+                "description": result[0],
+                "image": result[1]
+            }, ensure_ascii=False)
+            status_code = 200
 
-        # Set response encoding to UTF-8
+        response = make_response(response_body, status_code)
         response.headers['Content-Type'] = 'application/json; charset=utf-8'
         return response
     else:
-        # Bad Request: Missing 'description' parameter
-        return make_response(
-            jsonify({
-                "status": "error",
-                "message": "Description parameter is missing."
-            }),
-            400
-        )
+        response_body = json.dumps({
+            "status": "error",
+            "message": "Description parameter is missing."
+        }, ensure_ascii=False)
+        response = make_response(response_body, 400)
+        response.headers['Content-Type'] = 'application/json; charset=utf-8'
+        return response
 
 
 if __name__ == "__main__":
