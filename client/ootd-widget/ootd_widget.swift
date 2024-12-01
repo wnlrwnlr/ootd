@@ -7,46 +7,56 @@
 
 import WidgetKit
 import SwiftUI
+import Service
 
 struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+    func placeholder(in context: Context) -> Entry {
+        Entry(date: Date(), imageData: Data())
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> Entry {
+        let imageData = await UserSettingsRepository.shared.imageData ?? Data()
+        return Entry(date: Date(), imageData: imageData)
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<Entry> {
+        let imageData = await UserSettingsRepository.shared.imageData ?? Data()
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        var entries: [Entry] = []
+
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = Entry(date: entryDate, imageData: imageData)
             entries.append(entry)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
     }
-
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
+struct Entry: TimelineEntry {
+    var date: Date
+
+    let imageData: Data
 }
 
 struct ootd_widgetEntryView : View {
     var entry: Provider.Entry
+    
+    private let userSettingsRepository = UserSettingsRepository.shared
+    
+    var image: Image {
+        if let uiImage = UIImage(data: entry.imageData)?.resized(toWidth: 400) {
+            Image(uiImage: uiImage)
+        } else {
+            Image("sample-clothes")
+        }
+    }
 
     var body: some View {
         HStack {
-            Image("sample-clothes")
+            image
                 .resizable()
                 .overlay {
                     Rectangle()
@@ -54,11 +64,16 @@ struct ootd_widgetEntryView : View {
                         .background(LinearGradient(colors: [.clear, .clear, .secondary], startPoint: .top, endPoint: .bottom))
                 }
                 .overlay(alignment: .bottom) {
-                    Text("남성 일상 캐주얼")
-                        .bold()
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 20)
-                        .padding()
+                    if let sex = userSettingsRepository.sex,
+                       let situation = userSettingsRepository.situation,
+                       let stylePreference = userSettingsRepository.stylePreference {
+                        Text("\(sex.rawValue) \(situation.rawValue) \(stylePreference.rawValue)")
+                            .bold()
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 20)
+                            .shadow(color: .black, radius: 20)
+                            .padding()
+                    }
                 }
         }
     }
@@ -76,16 +91,19 @@ struct ootd_widget: Widget {
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-}
-
 #Preview(as: .systemSmall) {
     ootd_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
+    Entry(date: .now, imageData: Data())
+}
+
+extension UIImage {
+  func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+    let format = imageRendererFormat
+    format.opaque = isOpaque
+    return UIGraphicsImageRenderer(size: canvas, format: format).image {
+      _ in draw(in: CGRect(origin: .zero, size: canvas))
+    }
+  }
 }

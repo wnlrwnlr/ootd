@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Situation: String, CaseIterable, Identifiable {
+public enum Situation: String, CaseIterable, Identifiable {
     case casual = "일상"
     case formal = "정장"
     case sports = "운동"
@@ -17,5 +17,5 @@ enum Situation: String, CaseIterable, Identifiable {
     case school = "학교"
     case wedding = "결혼식"
 
-    var id: String { self.rawValue }
+    public var id: String { self.rawValue }
 }
