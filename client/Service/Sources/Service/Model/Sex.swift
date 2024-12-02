@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum Sex: String, CaseIterable, Identifiable {
+public enum Sex: String, CaseIterable, Identifiable {
     case male = "남성"
     case female = "여성"
     case unisex = "유니섹스"
     
-    var id: String { self.rawValue }
+    public var id: String { self.rawValue }
 }

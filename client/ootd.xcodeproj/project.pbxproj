@@ -10,6 +10,8 @@
 		5384C8F82CE0E46200B969DC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5384C8F72CE0E46200B969DC /* WidgetKit.framework */; };
 		5384C8FA2CE0E46200B969DC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5384C8F92CE0E46200B969DC /* SwiftUI.framework */; };
 		5384C90B2CE0E46400B969DC /* ootd-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		538BC5B62CF2223D00C68961 /* Service in Frameworks */ = {isa = PBXBuildFile; productRef = 538BC5B52CF2223D00C68961 /* Service */; };
+		538BC5B82CF2224B00C68961 /* Service in Frameworks */ = {isa = PBXBuildFile; productRef = 538BC5B72CF2224B00C68961 /* Service */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		5384C9102CE0E46400B969DC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
@@ -57,6 +59,7 @@
 		5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ootd-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5384C8F72CE0E46200B969DC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5384C8F92CE0E46200B969DC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		538BC5BA2CF2242700C68961 /* ootd-widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ootd-widgetExtension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -67,11 +70,21 @@
 			);
 			target = 5384C8F42CE0E46200B969DC /* ootd-widgetExtension */;
 		};
+		538BC5AD2CF21BB700C68961 /* Exceptions for "ootd" folder in "ootd" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 535B351A2CDBAE63000846F3 /* ootd */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		535B351D2CDBAE63000846F3 /* ootd */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				538BC5AD2CF21BB700C68961 /* Exceptions for "ootd" folder in "ootd" target */,
+			);
 			path = ootd;
 			sourceTree = "<group>";
 		};
@@ -100,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				538BC5B62CF2223D00C68961 /* Service in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				538BC5B82CF2224B00C68961 /* Service in Frameworks */,
 				5384C8FA2CE0E46200B969DC /* SwiftUI.framework in Frameworks */,
 				5384C8F82CE0E46200B969DC /* WidgetKit.framework in Frameworks */,
 			);
@@ -132,6 +147,7 @@
 		535B35122CDBAE63000846F3 = {
 			isa = PBXGroup;
 			children = (
+				538BC5BA2CF2242700C68961 /* ootd-widgetExtension.entitlements */,
 				535B351D2CDBAE63000846F3 /* ootd */,
 				535B352E2CDBAE64000846F3 /* ootdTests */,
 				535B35382CDBAE64000846F3 /* ootdUITests */,
@@ -183,6 +199,7 @@
 			);
 			name = ootd;
 			packageProductDependencies = (
+				538BC5B52CF2223D00C68961 /* Service */,
 			);
 			productName = ootd;
 			productReference = 535B351B2CDBAE63000846F3 /* ootd.app */;
@@ -251,6 +268,7 @@
 			);
 			name = "ootd-widgetExtension";
 			packageProductDependencies = (
+				538BC5B72CF2224B00C68961 /* Service */,
 			);
 			productName = "ootd-widgetExtension";
 			productReference = 5384C8F52CE0E46200B969DC /* ootd-widgetExtension.appex */;
@@ -291,6 +309,9 @@
 			);
 			mainGroup = 535B35122CDBAE63000846F3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				538BC5B42CF2223D00C68961 /* XCLocalSwiftPackageReference "Service" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 535B351C2CDBAE63000846F3 /* Products */;
 			projectDirPath = "";
@@ -509,12 +530,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ootd/ootd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ootd/Preview Content\"";
 				DEVELOPMENT_TEAM = 86886QH957;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ootd/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -525,7 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gyuni.ootd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gyuni.ootd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -538,12 +563,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ootd/ootd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ootd/Preview Content\"";
 				DEVELOPMENT_TEAM = 86886QH957;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ootd/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -554,7 +583,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gyuni.ootd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gyuni.ootd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -639,6 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "ootd-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86886QH957;
@@ -652,7 +682,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gyuni.ootd.ootd-widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gyuni.ootd.ootd-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -666,6 +696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "ootd-widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86886QH957;
@@ -679,7 +710,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gyuni.ootd.ootd-widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gyuni.ootd.ootd-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -737,6 +768,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		538BC5B42CF2223D00C68961 /* XCLocalSwiftPackageReference "Service" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Service;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		538BC5B52CF2223D00C68961 /* Service */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Service;
+		};
+		538BC5B72CF2224B00C68961 /* Service */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 538BC5B42CF2223D00C68961 /* XCLocalSwiftPackageReference "Service" */;
+			productName = Service;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 535B35132CDBAE63000846F3 /* Project object */;
 }
