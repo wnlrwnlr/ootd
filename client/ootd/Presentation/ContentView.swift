@@ -30,6 +30,11 @@ struct ContentView: View {
                 .scaledToFit()
                 .cornerRadius(20)
                 .frame(maxHeight: 250)
+            if let description = viewModel.description {
+                Text(description)
+                    .foregroundStyle(.secondary)
+                    .padding()
+            }
 
             List {
                 weatherSection

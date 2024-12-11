@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Recommendation: Codable {
+public struct Recommendation: Codable, Sendable {
     public let description: String
     public let image: String
 }
