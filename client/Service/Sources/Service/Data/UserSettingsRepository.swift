@@ -58,7 +58,15 @@ final public class UserSettingsRepository {
             set(newValue ?? "", forKey: "imageURL")
         }
     }
-    
+
+    public var description: String? {
+        get {
+            return get(forKey: "description")
+        } set {
+            set(newValue ?? "", forKey: "description")
+        }
+    }
+
     //  download image from url and return data
     public var imageData: Data? {
         get async {

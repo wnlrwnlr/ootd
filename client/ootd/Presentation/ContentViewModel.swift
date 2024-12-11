@@ -22,8 +22,8 @@ final class ContentViewModel: ObservableObject {
     @Published var stylePreference: StylePreference = .casual
     @Published var imageURL: URL?
     @Published var description: String?
-    @Published var temperature: String = "11°C"
-    @Published var humidity: String = "60%"
+    @Published var temperature: String = "??°C"
+    @Published var humidity: String = "??%"
     @Published var isLoading: Bool = false
     
     init() {
@@ -38,6 +38,9 @@ final class ContentViewModel: ObservableObject {
         }
         if let imageURL = userSettingsRepository.imageURL {
             self.imageURL = URL(string: imageURL)
+        }
+        if let description = userSettingsRepository.description {
+            self.description = description
         }
         
         let locManager = CLLocationManager()
@@ -73,8 +76,9 @@ final class ContentViewModel: ObservableObject {
                     self.imageURL = URL(string: recommendation.image)
                     self.description = recommendation.description
                     self.isLoading = false
-                    
+
                     self.userSettingsRepository.imageURL = self.imageURL?.absoluteString
+                    self.userSettingsRepository.description = self.description
                     self.userSettingsRepository.sex = self.sex
                     self.userSettingsRepository.situation = self.situation
                     self.userSettingsRepository.stylePreference = self.stylePreference
