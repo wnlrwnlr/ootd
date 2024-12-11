@@ -21,6 +21,7 @@ final class ContentViewModel: ObservableObject {
     @Published var situation: Situation = .casual
     @Published var stylePreference: StylePreference = .casual
     @Published var imageURL: URL?
+    @Published var description: String?
     @Published var temperature: String = "11°C"
     @Published var humidity: String = "60%"
     @Published var isLoading: Bool = false
@@ -39,7 +40,7 @@ final class ContentViewModel: ObservableObject {
             self.imageURL = URL(string: imageURL)
         }
         
-        var locManager = CLLocationManager()
+        let locManager = CLLocationManager()
         locManager.requestWhenInUseAuthorization()
         refreshWeather()
     }
@@ -70,6 +71,7 @@ final class ContentViewModel: ObservableObject {
                 let recommendation = try JSONDecoder().decode(Recommendation.self, from: data)
                 DispatchQueue.main.async {
                     self.imageURL = URL(string: recommendation.image)
+                    self.description = recommendation.description
                     self.isLoading = false
                     
                     self.userSettingsRepository.imageURL = self.imageURL?.absoluteString
