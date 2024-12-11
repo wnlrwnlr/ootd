@@ -10,7 +10,30 @@ import Service
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
+    @Environment(\.sizeCategory) var sizeCategory
 
+    var body: some View {
+        VStack(spacing: 0) {
+            List {
+                recommandationSection
+                weatherSection
+                personalSettingsSection
+            }
+
+            fetchRecommendationButton
+                .background(Color(uiColor: .systemGroupedBackground))
+        }
+        .disabled(viewModel.isLoading)
+        .navigationTitle("OOTD")
+        .overlay(alignment: .center) {
+            if viewModel.isLoading {
+                loadingOverlay
+            }
+        }
+    }
+
+    // MARK: - Subviews
+    
     @ViewBuilder
     private var imageView: some View {
         if let imageURL = viewModel.imageURL {
@@ -23,37 +46,21 @@ struct ContentView: View {
                 .resizable()
         }
     }
-
-    var body: some View {
-        VStack {
-            imageView
-                .scaledToFit()
-                .cornerRadius(20)
-                .frame(maxHeight: 250)
-            if let description = viewModel.description {
-                Text(description)
-                    .foregroundStyle(.secondary)
-                    .padding()
+    
+    private var recommandationSection: some View {
+        Section(
+            header: Text("추천"),
+            footer: Text(viewModel.description ?? "추천을 받아보세요")
+        ) {
+            HStack(alignment: .center) {
+                imageView
+                    .scaledToFit()
+                    .cornerRadius(20)
+                    .frame(height: 250)
             }
-
-            List {
-                weatherSection
-                personalSettingsSection
-            }
-            .overlay(alignment: .bottom) {
-                fetchRecommendationButton
-            }
-            .disabled(viewModel.isLoading)
-            .navigationTitle("OOTD")
-        }
-        .overlay(alignment: .center) {
-            if viewModel.isLoading {
-                loadingOverlay
-            }
+            .frame(maxWidth: .infinity)
         }
     }
-
-    // MARK: - Subviews
 
     private var weatherSection: some View {
         Section(
@@ -62,19 +69,14 @@ struct ContentView: View {
         ) {
             HStack(spacing: 20) {
                 Image(systemName: "thermometer")
-                VStack(alignment: .leading) {
-                    Text("기온")
-                        .font(.subheadline)
-                    Text(viewModel.temperature)
-                        .font(.title3)
-                        .bold()
-                }
-                VStack(alignment: .leading) {
-                    Text("습도")
-                        .font(.subheadline)
-                    Text(viewModel.humidity)
-                        .font(.title3)
-                        .bold()
+                if sizeCategory.isAccessibilityCategory {
+                    VStack(spacing: 20) {
+                        weatherStack
+                    }
+                } else {
+                    HStack(spacing: 20) {
+                        weatherStack
+                    }
                 }
                 Spacer()
                 Button(action: {
@@ -85,6 +87,24 @@ struct ContentView: View {
                 }
                 .buttonStyle(.plain)
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var weatherStack: some View {
+        VStack(alignment: .leading) {
+            Text("기온")
+                .font(.subheadline)
+            Text(viewModel.temperature)
+                .font(.title3)
+                .bold()
+        }
+        VStack(alignment: .leading) {
+            Text("습도")
+                .font(.subheadline)
+            Text(viewModel.humidity)
+                .font(.title3)
+                .bold()
         }
     }
 
@@ -119,7 +139,7 @@ struct ContentView: View {
                 await viewModel.fetchRecommendation()
             }
         }) {
-            Text("OOTD 추천받기")
+            Text("추천받기")
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity)
                 .frame(height: 30)
