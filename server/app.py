@@ -1,6 +1,20 @@
 import json
 from flask import Flask, request, make_response
 from handler import Handler
+import sentry_sdk
+from flask import Flask
+import os
+
+
+sentry_dsn = os.getenv("SENTRY_DSN")
+sentry_sdk.init(
+    dsn=sentry_dsn,
+    traces_sample_rate=0.1,
+    _experiments={
+        "continuous_profiling_auto_start": True,
+    },
+)
+
 
 app = Flask(__name__)
 
