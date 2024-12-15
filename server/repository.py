@@ -1,4 +1,5 @@
 import requests
+import sentry_sdk
 
 
 class Repository:
@@ -8,12 +9,14 @@ class Repository:
 
     def get(self, params):
         print("@@@ repository get > " + " params: " + str(params))
+        sentry_sdk.capture_message(f"Handling request with params: {params}")
 
         try:
             description = self.__request_chat(params)
             image = self.__request_image(description)
             return description, image
         except ValueError as e:
+            sentry_sdk.capture_exception(e)
             print(e)
             return None
 
@@ -77,5 +80,4 @@ class Repository:
             return response.json()["data"][0]["url"]
         else:
             raise ValueError(response.status_code, response.text)
-
 
