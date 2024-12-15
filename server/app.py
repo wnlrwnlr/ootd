@@ -2,7 +2,6 @@ import json
 from flask import Flask, request, make_response
 from handler import Handler
 import sentry_sdk
-from flask import Flask
 import os
 
 
