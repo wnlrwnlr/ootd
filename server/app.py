@@ -9,7 +9,7 @@ import os
 sentry_dsn = os.getenv("SENTRY_DSN")
 sentry_sdk.init(
     dsn=sentry_dsn,
-    traces_sample_rate=0.1,
+    traces_sample_rate=1.0,
     _experiments={
         "continuous_profiling_auto_start": True,
     },
