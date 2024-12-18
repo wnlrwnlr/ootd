@@ -85,4 +85,4 @@
 결과적으로 사용자 만족도와 서비스 활용도가 향상되어 장기적인 서비스 가치 상승이 기대됩니다.
 
 ## 시연 영상
-https://drive.google.com/file/d/1qwb1vNPZxa63eMO7j6RUgGRCL93Cscvf/view?usp=share_link
+https://drive.google.com/drive/folders/1aewtpSpLrrm-TVAA9aAlgeTn5j4r-gCI?usp=share_link
